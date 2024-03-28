@@ -4,7 +4,7 @@ import BasicTable from "./components/BasicTable";
 function App() {
   return (
     <Stack spacing={2}>
-      <Typography variant="h3">React Table</Typography>
+      <Typography variant="h3">Car Data Table</Typography>
       <BasicTable />
     </Stack>
   );
