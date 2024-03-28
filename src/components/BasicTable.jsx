@@ -13,7 +13,18 @@ import FirstPageIcon from "@mui/icons-material/FirstPage";
 import LastPageIcon from "@mui/icons-material/LastPage";
 import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
 import SkipNextIcon from "@mui/icons-material/SkipNext";
-import { Avatar, Box, Button, Stack } from "@mui/material";
+import {
+  Box,
+  Button,
+  Stack,
+  TextField,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@mui/material";
 
 function BasicTable() {
   const data = useMemo(() => mData, []);
@@ -37,10 +48,6 @@ function BasicTable() {
       header: "MODEL",
       accessorFn: (row) => `${row.model} - ${row.model_year}`,
     },
-    // {
-    //   header: "MODEL YEAR",
-    //   accessorKey: "model year",
-    // },
     {
       header: "VIN",
       accessorKey: "vin",
@@ -73,54 +80,55 @@ function BasicTable() {
   });
 
   return (
-    <Stack spacing={3}>
-      <Stack justifyContent="center" sx={{padding: "0px 20px"}}>
-        <Box sx={{ width: "300px" }}>
-          <input
-            type="text"
-            value={filtering}
-            placeholder="Search....."
-            onChange={(e) => setFiltering(e.target.value)}
-          />
-        </Box>
+    <Stack spacing={3} sx={{ padding: "20px" }}>
+      <Stack justifyContent="center" sx={{ padding: "0px 20px" }}>
+        <TextField
+          fullWidth
+          size="small"
+          value={filtering}
+          placeholder="Search....."
+          onChange={(e) => setFiltering(e.target.value)}
+        />
       </Stack>
-      <div class="w3-container">
-        <table class="w3-table-all w3-hoverable">
-          <thead>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <tr key={headerGroup.id}>
-                {headerGroup.headers.map((header) => (
-                  <th
-                    key={header.id}
-                    onClick={header.column.getToggleSortingHandler()}
-                  >
-                    {flexRender(
-                      header.column.columnDef.header,
-                      header.getContext()
-                    )}
-                    {
-                      { asc: "🔼", desc: "🔽" }[
-                        header.column.getIsSorted() ?? null
-                      ]
-                    }
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody>
+      <TableContainer>
+        <Table>
+          <TableHead>
+            <TableRow>
+              {table.getHeaderGroups().map((headerGroup) => (
+                <React.Fragment key={headerGroup.id}>
+                  {headerGroup.headers.map((header) => (
+                    <TableCell
+                      key={header.id}
+                      onClick={header.column.getToggleSortingHandler()}
+                    >
+                      {flexRender(
+                        header.column.columnDef.header,
+                        header.getContext()
+                      )}
+                      {
+                        { asc: "🔼", desc: "🔽" }[
+                          header.column.getIsSorted() ?? null
+                        ]
+                      }
+                    </TableCell>
+                  ))}
+                </React.Fragment>
+              ))}
+            </TableRow>
+          </TableHead>
+          <TableBody>
             {table.getRowModel().rows.map((row) => (
-              <tr key={row.id}>
+              <TableRow key={row.id}>
                 {row.getVisibleCells().map((cell) => (
-                  <td key={cell.id}>
+                  <TableCell key={cell.id}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </td>
+                  </TableCell>
                 ))}
-              </tr>
+              </TableRow>
             ))}
-          </tbody>
-        </table>
-      </div>
+          </TableBody>
+        </Table>
+      </TableContainer>
       <Stack
         spacing={2}
         direction="row"
@@ -128,27 +136,29 @@ function BasicTable() {
         sx={{ padding: "20px" }}
       >
         <Button
-          sx={{ cursor: "pointer" }}
+          variant="outlined"
+          disabled={!table.getCanPreviousPage()}
           onClick={() => table.setPageIndex(0)}
         >
           <FirstPageIcon />
         </Button>
         <Button
+          variant="outlined"
           disabled={!table.getCanPreviousPage()}
-          sx={{ cursor: "pointer" }}
           onClick={() => table.previousPage()}
         >
           <SkipPreviousIcon />
         </Button>
         <Button
+          variant="outlined"
           disabled={!table.getCanNextPage()}
-          sx={{ cursor: "pointer" }}
           onClick={() => table.nextPage()}
         >
           <SkipNextIcon />
         </Button>
         <Button
-          sx={{ cursor: "pointer" }}
+          variant="outlined"
+          disabled={!table.getCanNextPage()}
           onClick={() => table.setPageIndex(table.getPageCount() - 1)}
         >
           <LastPageIcon />
