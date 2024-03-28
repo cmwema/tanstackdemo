@@ -5,9 +5,9 @@ This project is a simple one-page React website that displays a list of cars wit
 ## Technologies Used
 
 - **React**: The project is built using the React library for building user interfaces.
-- **TanStack**: TanStack, which stands for TypeScript, Apollo, Next.js, and Prisma, is a modern full-stack JavaScript/TypeScript stack for building web applications.
-- **Luxon**: Luxon is a library for working with dates and times in JavaScript. It was used to style the SQL dates from the data.
-- **Material-UI (Mui)**: Material-UI is a popular React UI framework for designing and developing web applications with a consistent and customizable design system.
+- **[TanStack Table v8](https://tanstack.com/table/v8)**: TanStack Table v8 is a powerful table library for React applications, providing features such as pagination, sorting, and filtering. It was used to implement the table functionality in this project.
+- **[Luxon](https://moment.github.io/luxon/#/)**: Luxon is a library for working with dates and times in JavaScript. It was used to style the SQL dates from the data.
+- **[Material-UI (Mui)](https://mui.com/material-ui/getting-started/installation/)**: Material-UI is a popular React UI framework for designing and developing web applications with a consistent and customizable design system.
 
 ## Features
 
@@ -43,7 +43,7 @@ npm start
 ## Credits
 
 - **Mockaroo**: Used for generating realistic test data for the car listings.
-- **TanStack**: Leveraged for building the project with modern technologies and best practices.
+- **TanStack Table v8**: Leveraged for building the project with modern technologies and best practices.
 - **Luxon**: Utilized for styling SQL dates from the data.
 
 ## Note
@@ -53,3 +53,6 @@ The UI design of the website is basic and not visually appealing. It serves as a
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+```
+
+Feel free to use this updated README for your project!
