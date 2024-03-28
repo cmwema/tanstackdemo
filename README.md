@@ -54,5 +54,3 @@ The UI design of the website is basic and not visually appealing. It serves as a
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 ```
-
-Feel free to use this updated README for your project!
